@@ -1,0 +1,16 @@
+mysql:
+  image: mysql:5
+  environment:
+  - MYSQL_ROOT_PASSWORD=root
+  - MYSQL_DATABASE=web
+  ports:
+  - 9933:3306
+
+informea:
+  image: andreptb/tomcat:7-jdk7
+  volumes:
+  - ./webapp:/usr/local/tomcat/webapps/informea
+  ports:
+  - 9980:8080
+  links:
+  - mysql:db
